@@ -1,0 +1,1836 @@
+/* General Styles */
+:root {
+    --primary-red: #e63946;
+    --dark-red: #d90429;
+    --pure-black: #000000;
+    --pure-white: #ffffff;
+    --light-gray: #f8f9fa;
+    --dark-gray: #212529;
+    --semi-transparent: rgba(0, 0, 0, 0.6); /* Adjusted for header blur */
+    --text-color: #34495e;
+    --secondary-color: #f39c12;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.6;
+    color: var(--dark-gray);
+    background-color: var(--light-gray);
+    overflow-x: hidden;
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.2rem;
+}
+
+a {
+    text-decoration: none;
+    color: var(--primary-red);
+}
+
+ul {
+    list-style: none;
+}
+
+/* Header & Navigation */
+.header {
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(8px);
+    padding: 0.8rem 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.3);
+    border-bottom: 2px solid var(--primary-red);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.header.scrolled {
+    background-color: rgba(0, 0, 0, 0.8);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    color: var(--pure-white);
+    font-weight: 700;
+    font-size: 1.6rem;
+    text-decoration: none;
+    flex-shrink: 0;
+    max-width: 70%;
+}
+
+.flag-icon {
+    height: 60px;
+    margin-right: 4px;
+    filter: drop-shadow(0 0 5px var(--primary-red));
+    flex-shrink: 0;
+}
+
+.logo-text {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+    transition: all 0.3s ease;
+}
+
+.nav-menu {
+    display: flex;
+    flex-grow: 1;
+    justify-content: center;
+}
+
+.nav-menu ul {
+    display: flex;
+    list-style: none;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.nav-menu li {
+    margin: 0 0.5rem;
+}
+
+.nav-link {
+    color: var(--pure-white);
+    text-decoration: none;
+    font-weight: 500;
+    padding: 0.4rem 0.7rem;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    position: relative;
+    font-size: 0.95rem;
+    white-space: nowrap;
+}
+
+.nav-link:hover,
+.nav-link.active {
+    color: var(--primary-red);
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--primary-red);
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+    width: 100%;
+}
+
+.auth-buttons {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+/* Buttons */
+.btn {
+    display: inline-block;
+    padding: 0.6rem 1.5rem;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+    border: 2px solid transparent;
+    font-size: 0.95rem;
+    white-space: nowrap;
+}
+
+.btn-primary {
+    background: linear-gradient(45deg, var(--dark-red), var(--primary-red));
+    color: var(--pure-white);
+    box-shadow: 0 5px 15px rgba(230, 57, 70, 0.4);
+}
+
+.btn-primary:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(230, 57, 70, 0.6);
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: var(--pure-white);
+    border: 2px solid var(--pure-white);
+}
+
+.btn-secondary:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    transform: translateY(-5px);
+}
+
+.btn-login {
+    background-color: var(--primary-red);
+    color: var(--pure-white);
+}
+
+.btn-login:hover {
+    background-color: var(--dark-red);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(230, 57, 70, 0.4);
+}
+
+.btn-logout {
+    background-color: transparent;
+    color: var(--pure-white);
+    border: 2px solid var(--primary-red);
+    display: none; /* Controlled by JS */
+}
+
+.btn-logout:hover {
+    background-color: rgba(230, 57, 70, 0.2);
+}
+
+.btn-secondary-outline {
+    background-color: transparent;
+    color: var(--pure-white);
+    border: 2px solid var(--pure-white);
+    padding: 0.7rem 2rem;
+}
+
+.btn-secondary-outline:hover {
+    background-color: rgba(255, 255, 255, 0.15);
+    transform: translateY(-3px);
+}
+
+.btn-small {
+    padding: 8px 18px;
+    font-size: 0.9rem;
+    border-radius: 20px;
+}
+
+/* Mobile Menu */
+.mobile-menu-btn {
+    display: none;
+    background: none;
+    border: none;
+    color: var(--pure-white);
+    font-size: 1.6rem;
+    cursor: pointer;
+    padding: 0.2rem;
+    margin-left: 0.3rem;
+}
+
+.mobile-nav {
+    position: fixed;
+    top: 0;
+    right: -300px;
+    width: 200px;
+    height: 100%;
+    background-color: var(--semi-transparent);
+    backdrop-filter: blur(10px);
+    z-index: 1100;
+    padding: 1.2rem;
+    transition: right 0.4s ease;
+    overflow-y: auto;
+    border-left: 2px solid var(--primary-red);
+}
+
+.mobile-nav.active {
+    right: 0;
+}
+
+.mobile-nav-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.814);
+}
+
+.mobile-logo {
+    display: flex;
+    align-items: center;
+    color: var(--pure-white);
+    font-weight: 700;
+    font-size: 1.4rem;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    color: var(--primary-red);
+    font-size: 1.8rem;
+    cursor: pointer;
+}
+
+.mobile-nav-links {
+    list-style: none;
+    margin-bottom: 1.5rem;
+}
+
+.mobile-nav-links li {
+    margin-bottom: 1rem;
+}
+
+.mobile-nav-links a {
+    color: var(--pure-white);
+    text-decoration: none;
+    font-size: 1.1rem;
+    display: block;
+    padding: 0.7rem 1rem;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+}
+
+.mobile-nav-links a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: var(--primary-red);
+}
+
+.mobile-auth-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 1050;
+    display: none;
+}
+
+.overlay.active {
+    display: block;
+}
+
+/* Hero Section (General) */
+.hero-section {
+    height: 100vh;
+    position: relative;
+    margin-top: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.hero-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 10% 20%, rgba(230, 57, 70, 0.15) 0%, transparent 35%),
+                radial-gradient(circle at 90% 80%, rgba(230, 57, 70, 0.15) 0%, transparent 35%),
+                url('../images/main background.jpg') no-repeat center center/cover;
+    z-index: -2;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Adjusted opacity for better background visibility */
+    background: linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0.5)); 
+    z-index: -1;
+}
+
+.hero-content {
+    text-align: center;
+    color: var(--pure-white);
+    z-index: 10;
+    max-width: 900px;
+    padding: 0 20px;
+}
+
+.hero-title {
+    font-size: 3.8rem;
+    font-weight: 800;
+    line-height: 1.2;
+    margin-bottom: 1.2rem;
+    text-shadow: 0 0 20px rgba(230, 57, 70, 0.7);
+    background: linear-gradient(to right, var(--pure-white), var(--primary-red));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.hero-subtitle {
+    font-size: 1.3rem;
+    max-width: 700px;
+    margin: 0 auto 2rem;
+    color: var(--light-gray);
+}
+
+.hero-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-top: 1.2rem;
+}
+
+/* Hero Section - Page Specific Backgrounds (Adjusted opacity) */
+.trekking-hero .hero-background {
+    background: linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0.5)), /* Adjusted opacity */
+                url('../images/trekking-hero-image.jpg') no-repeat center center/cover;
+}
+.camping-hero .hero-background {
+    background: linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0.5)), /* Adjusted opacity */
+                url('../images/camping-hero-image.jpg') no-repeat center center/cover;
+}
+.booking-hero .hero-background {
+    background: linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0.5)), /* Adjusted opacity */
+                url('../images/booking-hero-image.jpg') no-repeat center center/cover;
+}
+.contact-hero .hero-background {
+    background: linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0.5)), /* Adjusted opacity */
+                url('images/contact-hero-image.jpg') no-repeat center center/cover;
+}
+.login-hero .hero-background {
+    background: linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0.5)), /* Adjusted opacity */
+                url('../images/login-hero-image.jpg') no-repeat center center/cover;
+}
+.events-hero .hero-background {
+    background: linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0.5)), /* Adjusted opacity */
+                url('../images/events-hero-image.jpg') no-repeat center center/cover;
+}
+
+
+/* Common Section Styles */
+.section {
+    padding: 4rem 0;
+    position: relative;
+}
+
+.section-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1.2rem;
+    position: relative;
+    display: block;
+    color: var(--dark-gray);
+    text-align: center;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 70px;
+    height: 4px;
+    background: var(--primary-red);
+}
+
+.section-description {
+    font-size: 1.15rem;
+    max-width: 750px;
+    margin: 0 auto 2.5rem;
+    color: var(--dark-gray);
+    text-align: center;
+}
+
+/* Adventure Cards (used on index, trekking, camping) */
+.adventure-cards, .why-us-cards, .event-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-top: 1.5rem;
+}
+
+.card {
+    background: var(--pure-white);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    transition: all 0.4s ease;
+    border: 1px solid rgba(230, 57, 70, 0.2);
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 12px 25px rgba(230, 57, 70, 0.2);
+    border-color: var(--primary-red);
+}
+
+.adventure-card {
+    padding: 1.8rem;
+    text-align: center;
+    height: 100%;
+}
+
+.icon-circle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 80px;
+    height: 80px;
+    background: var(--primary-red);
+    color: var(--pure-white);
+    border-radius: 50%;
+    margin-bottom: 1.5rem;
+    font-size: 2rem;
+    box-shadow: 0 6px 18px rgba(230, 57, 70, 0.3);
+}
+
+.adventure-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: var(--dark-gray);
+}
+
+.adventure-card p {
+    color: #555;
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+/* Why Choose Us */
+.why-choose-us-section {
+    background: linear-gradient(to bottom, var(--light-gray), #f0f2f5);
+}
+
+.icon-wrapper {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 70px;
+    height: 70px;
+    background: var(--primary-red);
+    border-radius: 50%;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 6px 18px rgba(230, 57, 70, 0.3);
+}
+
+.icon-white-bg {
+    color: var(--pure-white);
+    font-size: 1.8rem;
+}
+
+.why-us-card h4 {
+    font-size: 1.3rem;
+    margin-bottom: 0.8rem;
+    color: var(--dark-gray);
+}
+
+.why-us-card p {
+    color: #555;
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+/* Natural Beauty Section */
+.natural-beauty-section {
+    background: linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.9)),
+                url('../images/background.jpg') no-repeat center center/cover;
+    position: relative;
+}
+
+.image-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+}
+
+.gallery-item {
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+    height: 250px;
+    position: relative;
+    border: 2px solid var(--primary-red);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: all 0.5s ease;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.1);
+}
+
+.gallery-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+    z-index: 1;
+}
+
+/* CTA Section */
+.cta-section {
+    position: relative;
+    overflow: hidden;
+    padding: 5rem 0;
+}
+
+.cta-stripes {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background:
+        repeating-linear-gradient(
+            45deg,
+            var(--pure-black),
+            var(--pure-black) 20px,
+            var(--dark-red) 20px,
+            var(--dark-red) 40px,
+            var(--pure-white) 40px,
+            var(--pure-white) 60px
+        );
+    z-index: -2;
+}
+
+.cta-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3);
+    z-index: -1;
+}
+
+.cta-content {
+    position: relative;
+    z-index: 10;
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 3rem;
+    background: rgba(0, 0, 0, 0.6);
+    border-radius: 15px;
+    border: 2px solid var(--primary-red);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(5px);
+}
+
+.cta-title {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    color: var(--pure-white);
+    text-shadow: 0 0 15px rgba(230, 57, 70, 0.8);
+}
+
+.cta-description {
+    font-size: 1.2rem;
+    max-width: 700px;
+    margin: 0 auto 2.5rem;
+    color: var(--light-gray);
+}
+
+.cta-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1.8rem;
+    margin-top: 1.2rem;
+}
+
+/* Footer */
+.footer {
+    background-color: var(--dark-gray);
+    color: var(--light-gray);
+    padding-top: 4rem;
+    border-top: 3px solid var(--primary-red);
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 2.5rem;
+    margin-bottom: 3.5rem;
+}
+
+.footer-col h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    position: relative;
+    padding-bottom: 0.7rem;
+    color: var(--pure-white);
+}
+
+.footer-col h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50px;
+    height: 3px;
+    background: var(--primary-red);
+}
+
+.footer-logo {
+    color: var(--pure-white);
+    margin-bottom: 1.5rem;
+    font-size: 1.6rem;
+}
+
+.footer-col p {
+    margin-bottom: 1rem;
+    color: #bbb;
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+.footer-col ul {
+    list-style: none;
+}
+
+.footer-col ul li {
+    margin-bottom: 0.8rem;
+}
+
+.footer-col ul li a {
+    color: #bbb;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-size: 1rem;
+    display: block;
+}
+
+.footer-col ul li a:hover {
+    color: var(--primary-red);
+    padding-left: 5px;
+}
+
+.footer-col.contact p {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1rem;
+}
+
+.footer-bottom {
+    text-align: center;
+    padding: 1.5rem 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+    color: #bbb;
+    font-size: 1rem;
+}
+
+/* --- Page Specific Styles --- */
+
+/* Trekking Card Styles */
+.trek-card {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    padding: 0;
+}
+
+.trek-card .card-image {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+    transition: transform 0.4s ease;
+}
+
+.trek-card:hover .card-image {
+    transform: scale(1.05);
+}
+
+.trek-card .card-content {
+    padding: 1.5rem;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.trek-card h3 {
+    font-size: 1.6rem;
+    margin-bottom: 0.8rem;
+    color: var(--dark-gray);
+}
+
+.trek-card .duration,
+.trek-card .difficulty {
+    font-size: 0.95rem;
+    color: #666;
+    margin-bottom: 0.4rem;
+    display: flex;
+    align-items: center;
+}
+
+.trek-card .difficulty i {
+    margin-right: 8px;
+    color: var(--primary-red);
+}
+
+.trek-card .duration i {
+    margin-right: 8px;
+    color: var(--secondary-color);
+}
+
+.trek-card p {
+    font-size: 1rem;
+    color: #555;
+    margin-bottom: 1rem;
+}
+
+.trek-card .features-list {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 1.5rem;
+}
+
+.trek-card .features-list li {
+    font-size: 0.95rem;
+    color: var(--text-color);
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+}
+
+.trek-card .features-list i {
+    color: var(--primary-red);
+    margin-right: 10px;
+}
+
+.trek-card .btn-primary {
+    margin-top: auto;
+    align-self: flex-start;
+}
+
+
+/* Camping Package Cards Styles */
+.camping-card {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    padding: 0;
+}
+
+.camping-card .card-image {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+    transition: transform 0.4s ease;
+}
+
+.camping-card:hover .card-image {
+    transform: scale(1.05);
+}
+
+.camping-card .card-content {
+    padding: 1.5rem;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.camping-card h3 {
+    font-size: 1.6rem;
+    margin-bottom: 0.8rem;
+    color: var(--dark-gray);
+}
+
+.camping-card .duration,
+.camping-card .guests {
+    font-size: 0.95rem;
+    color: #666;
+    margin-bottom: 0.4rem;
+    display: flex;
+    align-items: center;
+}
+
+.camping-card .guests i {
+    margin-right: 8px;
+    color: var(--primary-red);
+}
+
+.camping-card .duration i {
+    margin-right: 8px;
+    color: var(--secondary-color);
+}
+
+.camping-card .price {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--primary-red);
+    margin-top: 0.8rem;
+    margin-bottom: 1.2rem;
+}
+.camping-card p {
+    font-size: 1.0rem;
+    color: #555;
+    margin-bottom: 1rem;
+}
+
+.camping-card .features-list {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 1.5rem;
+}
+
+.camping-card .features-list li {
+    font-size: 0.95rem;
+    color: var(--text-color);
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+}
+
+.camping-card .features-list i {
+    color: var(--primary-red);
+    margin-right: 10px;
+}
+
+.camping-card .btn-primary {
+    margin-top: auto;
+    align-self: flex-start;
+}
+
+
+/* Booking Form Styles */
+.booking-section {
+    background-color: var(--light-gray);
+}
+
+.booking-form-container {
+    background: var(--pure-white);
+    padding: 3rem;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    margin: 0 auto;
+    border: 1px solid rgba(230, 57, 70, 0.2);
+}
+
+.booking-form h3 {
+    font-size: 2rem;
+    color: var(--dark-gray);
+    margin-bottom: 1.8rem;
+    text-align: center;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 0.6rem;
+    color: var(--text-color);
+    font-size: 1.05rem;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="tel"],
+.form-group input[type="date"],
+.form-group input[type="number"],
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+    color: var(--dark-gray);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    border-color: var(--primary-red);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(230, 57, 70, 0.2);
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.form-group .half-width-group {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.form-group .half-width-group > div {
+    flex: 1;
+}
+
+.booking-submit-btn {
+    width: 100%;
+    padding: 15px;
+    font-size: 1.15rem;
+    font-weight: 700;
+    background: linear-gradient(45deg, var(--dark-red), var(--primary-red));
+    color: var(--pure-white);
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(230, 57, 70, 0.4);
+}
+
+.booking-submit-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(230, 57, 70, 0.6);
+}
+
+/* Payment Options Section (Booking Page) */
+.payment-options {
+    margin-top: 2.5rem;
+    padding-top: 2rem;
+    border-top: 1px solid #eee;
+}
+
+.payment-options h3 {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    color: var(--dark-gray);
+}
+
+.payment-methods-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.payment-method-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background-color: var(--pure-white);
+    position: relative;
+}
+
+.payment-method-item:hover {
+    border-color: var(--primary-red);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+    transform: translateY(-3px);
+}
+
+.payment-method-item.selected {
+    border-color: var(--primary-red);
+    box-shadow: 0 0 0 2px var(--primary-red);
+    background-color: rgba(230, 57, 70, 0.05);
+}
+
+.payment-method-item i {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    color: var(--text-color);
+}
+.payment-method-item img {
+    max-width: 60px;
+    height: auto;
+    margin-bottom: 0.5rem;
+}
+
+.payment-method-item span {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text-color);
+    text-align: center;
+}
+
+.payment-method-item input[type="radio"] {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.payment-method-item .check-icon {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    font-size: 1.2rem;
+    color: var(--primary-red);
+    display: none;
+}
+
+.payment-method-item.selected .check-icon {
+    display: block;
+}
+
+.payment-info-text {
+    font-size: 0.95rem;
+    color: #777;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+
+/* Contact Section */
+.contact-section {
+    background-color: var(--light-gray);
+}
+
+.contact-content-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 3rem;
+    align-items: flex-start;
+}
+
+.contact-info {
+    background: var(--dark-gray);
+    color: var(--pure-white);
+    padding: 2.5rem;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    border: 1px solid var(--primary-red);
+}
+
+.contact-info h3 {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    color: var(--primary-red);
+    position: relative;
+    padding-bottom: 0.5rem;
+}
+
+.contact-info h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50px;
+    height: 3px;
+    background: var(--pure-white);
+}
+
+.contact-info-item {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 1.5rem;
+    font-size: 1.05rem;
+    color: var(--light-gray);
+}
+
+.contact-info-item i {
+    font-size: 1.5rem;
+    margin-right: 15px;
+    color: var(--pure-white);
+    flex-shrink: 0;
+    padding-top: 5px;
+}
+
+.contact-info-item div {
+    flex-grow: 1;
+}
+
+.contact-info-item strong {
+    display: block;
+    margin-bottom: 0.3rem;
+    font-size: 1.15rem;
+    color: var(--pure-white);
+}
+
+.contact-info-item a {
+    color: var(--light-gray);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.contact-info-item a:hover {
+    color: var(--primary-red);
+}
+
+.social-links {
+    margin-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    padding-top: 1.5rem;
+}
+
+.social-links a {
+    display: inline-flex;
+    width: 45px;
+    height: 45px;
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--pure-white);
+    border-radius: 50%;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.3rem;
+    margin-right: 1rem;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.social-links a:hover {
+    background-color: var(--primary-red);
+    transform: translateY(-3px);
+}
+
+.contact-form-container {
+    background: var(--pure-white);
+    padding: 3rem;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(230, 57, 70, 0.2);
+}
+
+.contact-form h3 {
+    font-size: 2rem;
+    color: var(--dark-gray);
+    margin-bottom: 1.8rem;
+    text-align: center;
+}
+
+.contact-form .form-group {
+    margin-bottom: 1.5rem;
+}
+
+.contact-form .form-group label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 0.6rem;
+    color: var(--text-color);
+    font-size: 1.05rem;
+}
+
+.contact-form input[type="text"],
+.contact-form input[type="email"],
+.contact-form textarea {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+    color: var(--dark-gray);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    border-color: var(--primary-red);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(230, 57, 70, 0.2);
+}
+
+.contact-form textarea {
+    resize: vertical;
+    min-height: 150px;
+}
+
+.contact-submit-btn {
+    width: 100%;
+    padding: 15px;
+    font-size: 1.15rem;
+    font-weight: 700;
+    background: linear-gradient(45deg, var(--dark-red), var(--primary-red));
+    color: var(--pure-white);
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(230, 57, 70, 0.4);
+}
+
+.contact-submit-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(230, 57, 70, 0.6);
+}
+
+/* Map Section */
+.map-section {
+    padding: 0;
+    margin-bottom: 4rem;
+}
+
+.map-container {
+    width: 100%;
+    height: 500px;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    border: 1px solid rgba(230, 57, 70, 0.2);
+}
+
+.map-container iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+/* Login/Register Form Styles */
+.login-register-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 70px - 200px); /* Adjust height considering header and footer */
+    background-color: var(--light-gray);
+    padding: 4rem 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.auth-container {
+    background: var(--pure-white);
+    padding: 3rem;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    max-width: 450px;
+    width: 100%;
+    text-align: center;
+    border: 1px solid rgba(230, 57, 70, 0.2);
+    position: relative;
+    z-index: 1;
+}
+
+.auth-tabs {
+    display: flex;
+    margin-bottom: 2rem;
+    border-bottom: 2px solid #eee;
+}
+
+.auth-tab-btn {
+    flex: 1;
+    padding: 1rem 0;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-color);
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.auth-tab-btn.active {
+    color: var(--primary-red);
+}
+
+.auth-tab-btn::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--primary-red);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.auth-tab-btn.active::after {
+    transform: scaleX(1);
+}
+
+.auth-form h3 {
+    font-size: 1.8rem;
+    color: var(--dark-gray);
+    margin-bottom: 1.5rem;
+}
+
+.auth-form .form-group {
+    margin-bottom: 1.5rem;
+    text-align: left;
+}
+
+.auth-form input[type="text"],
+.auth-form input[type="email"],
+.auth-form input[type="password"],
+.auth-form input[type="tel"] { /* Added tel input style */
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+    color: var(--dark-gray);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.auth-form input:focus {
+    border-color: var(--primary-red);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(230, 57, 70, 0.2);
+}
+
+.form-text-link {
+    font-size: 0.95rem;
+    color: var(--text-color);
+    text-align: right;
+    margin-top: -0.8rem;
+    margin-bottom: 1.5rem;
+    display: block;
+}
+
+.form-text-link a {
+    color: var(--primary-red);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.form-text-link a:hover {
+    text-decoration: underline;
+}
+
+.auth-submit-btn {
+    width: 100%;
+    padding: 15px;
+    font-size: 1.15rem;
+    font-weight: 700;
+    background: linear-gradient(45deg, var(--dark-red), var(--primary-red));
+    color: var(--pure-white);
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(230, 57, 70, 0.4);
+}
+
+.auth-submit-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(230, 57, 70, 0.6);
+}
+
+.or-separator {
+    margin: 1.5rem 0;
+    color: #ccc;
+    position: relative;
+}
+
+.or-separator::before,
+.or-separator::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    width: 40%;
+    height: 1px;
+    background: #eee;
+}
+
+.or-separator::before {
+    left: 0;
+}
+
+.or-separator::after {
+    right: 0;
+}
+
+.social-login-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.social-login-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 15px;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    border: 1px solid #ddd;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.social-login-btn i {
+    margin-right: 10px;
+    font-size: 1.2rem;
+}
+
+.social-login-btn.google {
+    background-color: #db4437; /* Google Red */
+    color: var(--pure-white);
+    border-color: #db4437;
+}
+.social-login-btn.google:hover {
+    background-color: #c0362c;
+    box-shadow: 0 2px 8px rgba(219, 68, 55, 0.4);
+}
+
+.social-login-btn.facebook {
+    background-color: #4267b2; /* Facebook Blue */
+    color: var(--pure-white);
+    border-color: #4267b2;
+}
+.social-login-btn.facebook:hover {
+    background-color: #365899;
+    box-shadow: 0 2px 8px rgba(66, 103, 178, 0.4);
+}
+
+.social-login-btn.phone { /* New style for phone login button */
+    background-color: #25d366; /* WhatsApp green, common for phone */
+    color: var(--pure-white);
+    border-color: #25d366;
+}
+.social-login-btn.phone:hover {
+    background-color: #1da851;
+    box-shadow: 0 2px 8px rgba(37, 211, 102, 0.4);
+}
+
+/* Hidden fields by default */
+.register-only {
+    display: none;
+}
+.login-only {
+    display: block; /* Show login fields by default */
+}
+
+/* Event Cards */
+.event-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2.5rem;
+    margin-top: 2rem;
+}
+
+.event-card {
+    background: var(--pure-white);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    transition: all 0.4s ease;
+    border: 1px solid rgba(230, 57, 70, 0.2);
+    display: flex;
+    flex-direction: column;
+}
+
+.event-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 12px 25px rgba(230, 57, 70, 0.2);
+    border-color: var(--primary-red);
+}
+
+.event-card .card-image {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.event-card:hover .card-image {
+    transform: scale(1.05);
+}
+
+.event-card .card-content {
+    padding: 1.8rem;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.event-card .event-date {
+    font-size: 0.95rem;
+    color: var(--primary-red);
+    font-weight: 600;
+    margin-bottom: 0.8rem;
+    display: flex;
+    align-items: center;
+}
+.event-card .event-date i {
+    margin-right: 8px;
+    font-size: 1.1rem;
+}
+
+.event-card h3 {
+    font-size: 1.7rem;
+    margin-bottom: 1rem;
+    color: var(--dark-gray);
+    line-height: 1.3;
+}
+
+.event-card .event-location {
+    font-size: 0.95rem;
+    color: #666;
+    margin-bottom: 1.2rem;
+    display: flex;
+    align-items: center;
+}
+.event-card .event-location i {
+    margin-right: 8px;
+}
+
+.event-card p {
+    font-size: 1rem;
+    color: #555;
+    margin-bottom: 1.5rem;
+}
+
+.event-card .btn-primary {
+    margin-top: auto;
+    align-self: flex-start;
+    padding: 10px 22px;
+    font-size: 0.95rem;
+}
+
+
+/* Responsive Design */
+@media (max-width: 1100px) {
+    .logo {
+        font-size: 1.4rem;
+    }
+
+    .flag-icon {
+        height: 32px;
+    }
+}
+
+@media (max-width: 950px) {
+    .logo {
+        font-size: 1.3rem;
+    }
+
+    .nav-link {
+        font-size: 0.9rem;
+        padding: 0.4rem 0.6rem;
+    }
+}
+
+@media (max-width: 850px) {
+    .logo {
+        font-size: 1.2rem;
+    }
+
+    .btn {
+        padding: 0.5rem 1.2rem;
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .nav-menu, .auth-buttons {
+        display: none;
+    }
+
+    .mobile-menu-btn {
+        display: block;
+    }
+
+    .logo {
+        font-size: 1.3rem;
+        max-width: 80%;
+    }
+
+    .hero-title {
+        font-size: 2.8rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1.2rem;
+    }
+
+    .hero-buttons, .cta-buttons {
+        flex-direction: column;
+        align-items: center;
+        gap: 1.2rem;
+    }
+
+    .section {
+        padding: 3.5rem 0;
+    }
+
+    .section-title {
+        font-size: 2rem;
+    }
+
+    .section-description {
+        font-size: 1.1rem;
+    }
+
+    /* Page specific responsive adjustments */
+    .trek-card .card-image,
+    .camping-card .card-image {
+        height: 200px;
+    }
+    .trek-card h3,
+    .camping-card h3 {
+        font-size: 1.4rem;
+    }
+
+    .booking-form-container,
+    .contact-info,
+    .contact-form-container {
+        padding: 2rem;
+    }
+    .form-group .half-width-group {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    .contact-content-grid {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+    }
+    .contact-info h3,
+    .contact-form h3 {
+        font-size: 1.6rem;
+    }
+    .map-container {
+        height: 400px;
+    }
+
+    .auth-container {
+        padding: 2rem 1.5rem;
+    }
+    .auth-tab-btn {
+        font-size: 1rem;
+        padding: 0.8rem 0;
+    }
+    .auth-form h3 {
+        font-size: 1.6rem;
+    }
+    .auth-submit-btn {
+        font-size: 1.05rem;
+        padding: 12px;
+    }
+
+    .event-card .card-image {
+        height: 220px;
+    }
+    .event-card h3 {
+        font-size: 1.5rem;
+    }
+    .payment-methods-grid {
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    }
+}
+
+@media (max-width: 480px) {
+    .logo {
+        font-size: 1.1rem;
+    }
+
+    .flag-icon {
+        height: 28px;
+    }
+
+    .hero-title {
+        font-size: 2.2rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1rem;
+        padding: 0 15px;
+    }
+
+    .section-title {
+        font-size: 1.8rem;
+    }
+
+    .adventure-cards, .why-us-cards, .image-gallery, .event-cards {
+        grid-template-columns: 1fr;
+        gap: 1.8rem;
+    }
+
+    .footer-grid {
+        gap: 2rem;
+    }
+
+    .cta-content {
+        padding: 2rem 1.2rem;
+    }
+
+    .cta-title {
+        font-size: 1.8rem;
+    }
+
+    .cta-description {
+        font-size: 1rem;
+    }
+
+    /* Page specific responsive adjustments */
+    .trek-card .card-image,
+    .camping-card .card-image {
+        height: 200px;
+    }
+    .trek-card h3,
+    .camping-card h3 {
+        font-size: 1.3rem;
+    }
+
+    .booking-form-container,
+    .contact-info,
+    .contact-form-container {
+        padding: 1.5rem;
+    }
+    .booking-form h3 {
+        font-size: 1.8rem;
+    }
+    .form-group label {
+        font-size: 1rem;
+    }
+    .booking-submit-btn {
+        font-size: 1.05rem;
+        padding: 12px;
+    }
+    .contact-info-item {
+        font-size: 0.95rem;
+    }
+    .contact-info-item i {
+        font-size: 1.3rem;
+    }
+    .contact-info-item strong {
+        font-size: 1.05rem;
+    }
+    .map-container {
+        height: 300px;
+    }
+    .payment-method-item i {
+        font-size: 2rem;
+    }
+    .payment-method-item img {
+        max-width: 50px;
+    }
+    .payment-method-item span {
+        font-size: 0.85rem;
+    }
+}
+
+@media (max-width: 360px) {
+    .logo {
+        font-size: 1rem;
+    }
+
+    .mobile-logo {
+        font-size: 1.2rem;
+    }
+}
