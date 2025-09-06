@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - Karbi Anglong Adventures</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- HEADER -->
+    <header class="header">
+        <div class="container header-content">
+            <div class="logo">
+                <img src="images/eco logo.png"> 
+                <span class="logo-text">ECO TOURISM CHINTHONG</span>
+            </div>
+            <nav class="nav-menu">
+                <ul>
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="trekking.html" class="nav-link">Trekking</a></li>
+                    <li><a href="camping.html" class="nav-link">Camping</a></li>
+                    <li><a href="events.html" class="nav-link">Events</a></li>
+                    <li><a href="booking.html" class="nav-link">My Booking</a></li>
+                    <li><a href="contact.html" class="nav-link">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="auth-buttons">
+                <a href="login.html" class="btn btn-login" id="navLoginBtn">Log In</a>
+                <a href="#" class="btn btn-logout" id="logoutBtn">Logout</a>
+            </div>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+    
+    <!-- Mobile Navigation -->
+    <div class="mobile-nav" id="mobileNav">
+        <div class="mobile-nav-header">
+            <div class="mobile-logo">
+                <img src="images/eco logo.png" alt="Karbi Anglong Flag" class="flag-icon" style="height: 28px;"> 
+            </div>
+            <button class="close-btn" id="closeMobileNavBtn">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <ul class="mobile-nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="trekking.html">Trekking</a></li>
+            <li><a href="camping.html">Camping</a></li>
+            <li><a href="events.html">Events</a></li>
+            <li><a href="booking.html">My Booking</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            
+
+        </ul>
+        <div class="mobile-auth-buttons">
+            <a href="login.html" class="btn btn-login" id="mobileLoginBtn">Log In</a>
+            <a href="#" class="btn btn-logout" id="mobileLogoutBtn">Logout</a>
+        </div>
+    </div>
+    <div class="overlay" id="overlay"></div>
+
+    <!-- HERO SECTION for Register Page -->
+    <section class="hero-section login-hero" id="register-home">
+        <div class="hero-background"></div>
+        <div class="hero-overlay"></div>
+        <div class="container hero-content">
+            <h1 class="hero-title">Join Our Adventure Community!</h1>
+            <p class="hero-subtitle">
+                Create an account to unlock exclusive features, manage bookings, and connect with fellow adventurers.
+            </p>
+            <div class="hero-buttons">
+                <a href="#register-form-section" class="btn btn-primary">Start Your Journey</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- REGISTER FORM SECTION -->
+    <section class="login-register-section" id="register-form-section">
+        <div class="auth-container">
+            <form class="auth-form" id="registerForm">
+                <h3>Create New Account</h3>
+                <div class="form-group">
+                    <label for="registerName">Full Name</label>
+                    <input type="text" id="registerName" name="registerName" required>
+                </div>
+                <div class="form-group">
+                    <label for="registerEmail">Email Address</label>
+                    <input type="email" id="registerEmail" name="registerEmail" required>
+                </div>
+                <div class="form-group">
+                    <label for="registerPassword">Password</label>
+                    <input type="password" id="registerPassword" name="registerPassword" required>
+                </div>
+                <div class="form-group">
+                    <label for="registerConfirmPassword">Confirm Password</label>
+                    <input type="password" id="registerConfirmPassword" name="registerConfirmPassword" required>
+                </div>
+                
+                <button type="submit" class="btn auth-submit-btn" id="registerEmailPassBtn">Register with Email</button>
+
+                <p class="or-separator">OR</p>
+
+                <div class="social-login-buttons">
+                    <button type="button" class="social-login-btn google" id="registerGoogleBtn"><i class="fab fa-google"></i> Register with Google</button>
+                    <button type="button" class="social-login-btn facebook" id="registerFacebookBtn"><i class="fab fa-facebook-f"></i> Register with Facebook</button>
+                    <button type="button" class="social-login-btn phone" id="registerPhoneBtn"><i class="fas fa-phone"></i> Register with Phone</button>
+                </div>
+
+                <!-- Phone number OTP verification section (initially hidden) -->
+                <div id="phoneOtpSection" style="display: none; margin-top: 20px; padding-top: 20px; border-top: 1px solid #eee;">
+                    <h4>Verify Phone Number</h4>
+                    <div class="form-group">
+                        <label for="phoneInput">Phone Number (e.g., +919876543210)</label>
+                        <input type="tel" id="phoneInput" name="phoneInput" placeholder="Enter your phone number" required>
+                        <!-- reCAPTCHA container for Firebase Phone Auth - Placeholder for future backend -->
+                        <div id="recaptcha-container" style="margin-top: 15px; border: 1px dashed #ccc; padding: 10px; text-align: center; font-size: 0.9em; color: #777;">
+                            reCAPTCHA will appear here (requires backend).
+                        </div>
+                        <button type="button" class="btn btn-primary btn-small" id="sendOtpBtn" style="margin-top: 10px;">Send OTP</button>
+                    </div>
+                    <div class="form-group" id="otpInputGroup" style="display: none;">
+                        <label for="otpCode">OTP Code</label>
+                        <input type="text" id="otpCode" name="otpCode" placeholder="Enter OTP" maxlength="6" required>
+                        <button type="button" class="btn btn-primary btn-small" id="verifyOtpBtn" style="margin-top: 10px;">Verify OTP</button>
+                    </div>
+                </div>
+
+                <p class="form-text-link" style="margin-top: 2rem; text-align: center;">Already have an account? <a href="login.html">Log In</a></p>
+            </form>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container footer-grid">
+            <div class="footer-col about">
+                <div class="logo footer-logo">
+                    <img src="images/eco logo.png" alt="Karbi Anglong Flag" class="flag-icon" style="height: 60px;">
+                </div>
+                <p>Explore the vibrant culture and breathtaking landscapes of Karbi Anglong. We're dedicated to providing unforgettable adventures in one of India's most beautiful regions.</p>
+            </div>
+            <div class="footer-col">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="trekking.html">Trekking</a></li>
+                    <li><a href="camping.html">Camping</a></li>
+                    <li><a href="events.html">Events</a></li>
+                    <li><a href="booking.html">Booking</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Services</h3>
+                <ul>
+                    <li><a href="#">Guided Tour</a></li>
+                    <li><a href="#">Equipment Rental</a></li>
+                    <li><a href="#">Photography Tours</a></li>
+                    <li><a href="#">Cultural Experiences</a></li>
+                    <li><a href="#">Custom Adventures</a></li>
+                </ul>
+            </div>
+            <div class="footer-col contact">
+                <h3>Contact</h3>
+                <p><i class="fas fa-map-marker-alt"></i> Karbi Anglong, Assam, India</p>
+                <p><i class="fas fa-envelope"></i> info@karbianglong.com</p>
+                <p><i class="fas fa-phone"></i> +91 987 654 3210</p>
+                <p><i class="fas fa-clock"></i> Mon-Sat: 9AM - 6PM</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+                   <p>&copy; 2025 ECO TOURISM CHINTHONG. All rights reserved. | Designed with ❤️ for Nature Lovers</p>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

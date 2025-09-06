@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Camping Experiences - Karbi Anglong</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* Specific styles for the camping page hero */
+        .camping-hero .hero-background {
+            background: linear-gradient(to bottom, rgba(0,0,0,0.7), rgba(0,0,0,0.8)),
+                        url('images/camping-hero-image.jpg') no-repeat center center/cover; /* Replace with your camping hero image */
+            /* Ensure 'images' directory exists and image is there */
+        }
+        
+        /* Styles for Camping Package Cards - similar to trek-card for consistency */
+        .camping-card {
+            display: flex;
+            flex-direction: column;
+            text-align: left; /* Override adventure-card text-align */
+            padding: 0; /* Remove padding from card body, add to content div */
+        }
+
+        .camping-card .card-image {
+            width: 100%;
+            height: 220px; /* Fixed height for consistent image size */
+            object-fit: cover;
+            border-top-left-radius: 12px;
+            border-top-right-radius: 12px;
+            transition: transform 0.4s ease;
+        }
+
+        .camping-card:hover .card-image {
+            transform: scale(1.05); /* Slight zoom on image hover */
+        }
+
+        .camping-card .card-content {
+            padding: 1.5rem;
+            flex-grow: 1; /* Allows content to expand and fill space */
+            display: flex;
+            flex-direction: column;
+        }
+
+        .camping-card h3 {
+            font-size: 1.6rem;
+            margin-bottom: 0.8rem;
+            color: var(--dark-gray);
+        }
+
+        .camping-card .duration,
+        .camping-card .guests {
+            font-size: 0.95rem;
+            color: #666;
+            margin-bottom: 0.4rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .camping-card .guests i {
+            margin-right: 8px;
+            color: var(--primary-red);
+        }
+
+        .camping-card .duration i {
+            margin-right: 8px;
+            color: var(--secondary-color);
+        }
+
+        .camping-card .price {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--primary-red);
+            margin-top: 0.8rem;
+            margin-bottom: 1.2rem;
+        }
+        .camping-card p {
+            font-size: 1rem;
+            color: #555;
+            margin-bottom: 1rem;
+        }
+
+        .camping-card .features-list {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 1.5rem;
+        }
+
+        .camping-card .features-list li {
+            font-size: 0.95rem;
+            color: var(--text-color);
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .camping-card .features-list i {
+            color: var(--primary-red);
+            margin-right: 10px;
+        }
+
+        .camping-card .btn-primary {
+            margin-top: auto; /* Pushes button to the bottom */
+            align-self: flex-start; /* Aligns button to the left */
+        }
+
+        /* Responsive adjustments for camping cards */
+        @media (max-width: 768px) {
+            .camping-card .card-image {
+                height: 200px;
+            }
+            .camping-card h3 {
+                font-size: 1.4rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container header-content">
+            <div class="logo">
+                <img src="eco logo.png"> 
+                <span class="logo-text">ECO TOURISM CHINTHONG</span>
+            </div>
+            <nav class="nav-menu">
+                <ul>
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="trekking.html" class="nav-link">Trekking</a></li>
+                    <li><a href="camping.html" class="nav-link active">Camping</a></li> <li><a href="events.html" class="nav-link">Events</a></li>
+                    <li><a href="booking.html" class="nav-link">My Booking</a></li>
+                    <li><a href="contact.html" class="nav-link">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="auth-buttons">
+                <a href="login.html" class="btn btn-login" id="navLoginBtn">Log In</a>
+                <a href="#" class="btn btn-logout" id="logoutBtn">Logout</a>
+            </div>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+    
+    <div class="mobile-nav" id="mobileNav">
+        <div class="mobile-nav-header">
+            <div class="mobile-logo">
+                <img src="eco logo.png" alt="Karbi Anglong Flag" class="flag-icon" style="height: 28px;"> 
+            </div>
+            <button class="close-btn" id="closeMobileNavBtn">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <ul class="mobile-nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="trekking.html">Trekking</a></li>
+            <li><a href="camping.html" class="active">Camping</a></li>
+            <li><a href="events.html">Events</a></li>
+            <li><a href="booking.html">My Booking</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <div class="mobile-auth-buttons">
+            <a href="login.html" class="btn btn-login" id="mobileLoginBtn">Log In</a>
+            <a href="#" class="btn btn-logout" id="mobileLogoutBtn">Logout</a>
+        </div>
+    </div>
+    <div class="overlay" id="overlay"></div>
+
+    <section class="hero-section camping-hero" id="camping-home">
+        <div class="hero-background" style="background-image: url('images/camping-hero-image.jpg');"></div>
+        <div class="hero-overlay"></div>
+        <div class="container hero-content">
+            <h1 class="hero-title">Unforgettable Camping Experiences</h1>
+            <p class="hero-subtitle">
+                Spend nights under the starry skies of Karbi Anglong, surrounded by pristine nature.
+            </p>
+            <div class="hero-buttons">
+                <a href="#camping-packages" class="btn btn-primary">Explore Campsites</a>
+                <a href="contact.html" class="btn btn-secondary-outline">Custom Camp</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="camping-packages">
+        <div class="container">
+            <h2 class="section-title">Our Camping Packages</h2>
+            <p class="section-description">From serene lakeside spots to adventurous forest clearings, find your perfect outdoor escape.</p>
+            <div class="adventure-cards"> <div class="card camping-card">
+                    <img src="images/camp-lakeside.jpg" alt="Serene Lakeside Camp" class="card-image">
+                    <div class="card-content">
+                        <h3>Serene Lakeside Camp</h3>
+                        <p class="duration"><i class="fas fa-calendar-alt"></i> 2 Days / 1 Night</p>
+                        <p class="guests"><i class="fas fa-users"></i> Up to 4 People</p>
+                        <p>Enjoy tranquil nights by a beautiful lake, perfect for stargazing and peaceful relaxation. Includes all camping gear and a campfire.</p>
+                        <ul class="features-list">
+                            <li><i class="fas fa-check-circle"></i> Lakeside View</li>
+                            <li><i class="fas fa-check-circle"></i> Tents & Sleeping Bags</li>
+                            <li><i class="fas fa-check-circle"></i> Campfire & BBQ Kit</li>
+                            <li><i class="fas fa-check-circle"></i> Basic Amenities</li>
+                        </ul>
+                        <p class="price">From ₹3,500/night</p>
+                        <a href="booking.html?package=lakeside-camp" class="btn btn-primary btn-small">Book This Camp</a>
+                    </div>
+                </div>
+
+                <div class="card camping-card">
+                    <img src="images/camp-forest.jpg" alt="Forest Wilderness Retreat" class="card-image">
+                    <div class="card-content">
+                        <h3>Forest Wilderness Retreat</h3>
+                        <p class="duration"><i class="fas fa-calendar-alt"></i> 3 Days / 2 Nights</p>
+                        <p class="guests"><i class="fas fa-users"></i> Up to 6 People</p>
+                        <p>Immerse yourself in the heart of the forest with this secluded camping experience. Ideal for nature lovers and adventurers seeking true solitude.</p>
+                        <ul class="features-list">
+                            <li><i class="fas fa-check-circle"></i> Secluded Forest Spot</li>
+                            <li><i class="fas fa-check-circle"></i> Durable Tents</li>
+                            <li><i class="fas fa-check-circle"></i> Guided Nature Walks</li>
+                            <li><i class="fas fa-check-circle"></i> Camp Cook Available</li>
+                        </ul>
+                        <p class="price">From ₹6,000/night</p>
+                        <a href="booking.html?package=forest-retreat" class="btn btn-primary btn-small">Book This Camp</a>
+                    </div>
+                </div>
+
+                <div class="card camping-card">
+                    <img src="images/camp-hilltop.jpg" alt="Hilltop Adventure Camp" class="card-image">
+                    <div class="card-content">
+                        <h3>Hilltop Adventure Camp</h3>
+                        <p class="duration"><i class="fas fa-calendar-alt"></i> 2 Days / 1 Night</p>
+                        <p class="guests"><i class="fas fa-users"></i> Up to 8 People</p>
+                        <p>Experience breathtaking sunrises and sunsets from a panoramic hilltop campsite. Perfect for group adventures and photography enthusiasts.</p>
+                        <ul class="features-list">
+                            <li><i class="fas fa-check-circle"></i> Panoramic Views</li>
+                            <li><i class="fas fa-check-circle"></i> Large Group Tents</li>
+                            <li><i class="fas fa-check-circle"></i> Telescope for Stargazing</li>
+                            <li><i class="fas fa-check-circle"></i> Safety Briefing</li>
+                        </ul>
+                        <p class="price">From ₹4,500/night</p>
+                        <a href="booking.html?package=hilltop-camp" class="btn btn-primary btn-small">Book This Camp</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div class="cta-stripes"></div>
+        <div class="cta-overlay"></div>
+        <div class="container cta-content">
+            <h2 class="cta-title">Ready for Your Next Outdoor Escape?</h2>
+            <p class="cta-description">Find your perfect spot under the stars or let us help you customize your camping dream!</p>
+            <div class="cta-buttons">
+                <a href="booking.html" class="btn btn-primary">Book Your Camp</a>
+                <a href="contact.html" class="btn btn-secondary-outline">Get Custom Quote</a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container footer-grid">
+            <div class="footer-col about">
+                <div class="logo footer-logo">
+                    <img src="eco logo.png" style="height: 60px;">
+                </div>
+                <p>Explore the vibrant culture and breathtaking landscapes of Karbi Anglong. We're dedicated to providing unforgettable adventures in one of India's most beautiful regions.</p>
+            </div>
+            <div class="footer-col">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="trekking.html">Trekking</a></li>
+                    <li><a href="camping.html">Camping</a></li>
+                    <li><a href="events.html">Events</a></li>
+                    <li><a href="booking.html">Booking</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Services</h3>
+                <ul>
+                    <li><a href="#">Guided Tour</a></li>
+                    <li><a href="#">Equipment Rental</a></li>
+                    <li><a href="#">Photography Tours</a></li>
+                    <li><a href="#">Cultural Experiences</a></li>
+                    <li><a href="#">Custom Adventures</a></li>
+                </ul>
+            </div>
+            <div class="footer-col contact">
+                <h3>Contact</h3>
+                <p><i class="fas fa-map-marker-alt"></i> Karbi Anglong, Assam, India</p>
+                <p><i class="fas fa-envelope"></i> info@karbianglong.com</p>
+                <p><i class="fas fa-phone"></i> +91 987 654 3210</p>
+                <p><i class="fas fa-clock"></i> Mon-Sat: 9AM - 6PM</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 ECO TOURISM CHINTHONG. All rights reserved. | Designed with ❤️ for Nature Lovers</p>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

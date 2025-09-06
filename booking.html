@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Booking - Karbi Anglong Adventures</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* Specific styles for the booking page hero */
+        .booking-hero .hero-background {
+            background: linear-gradient(to bottom, rgba(0,0,0,0.7), rgba(0,0,0,0.8)),
+                        url('images/booking-hero-image.jpg') no-repeat center center/cover; /* Replace with your booking hero image */
+            /* Ensure 'images' directory exists and image is there */
+        }
+
+        /* Booking Form Styles */
+        .booking-section {
+            background-color: var(--light-gray);
+        }
+
+        .booking-form-container {
+            background: var(--pure-white);
+            padding: 3rem;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            margin: 0 auto;
+            border: 1px solid rgba(230, 57, 70, 0.2);
+        }
+
+        .booking-form h3 {
+            font-size: 2rem;
+            color: var(--dark-gray);
+            margin-bottom: 1.8rem;
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 0.6rem;
+            color: var(--text-color);
+            font-size: 1.05rem;
+        }
+
+        .form-group input[type="text"],
+        .form-group input[type="email"],
+        .form-group input[type="tel"],
+        .form-group input[type="date"],
+        .form-group input[type="number"],
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+            color: var(--dark-gray);
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: var(--primary-red);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(230, 57, 70, 0.2);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .form-group .half-width-group {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .form-group .half-width-group > div {
+            flex: 1;
+        }
+
+        .booking-submit-btn {
+            width: 100%;
+            padding: 15px;
+            font-size: 1.15rem;
+            font-weight: 700;
+            background: linear-gradient(45deg, var(--dark-red), var(--primary-red));
+            color: var(--pure-white);
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(230, 57, 70, 0.4);
+        }
+
+        .booking-submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(230, 57, 70, 0.6);
+        }
+
+        /* Responsive adjustments for booking form */
+        @media (max-width: 768px) {
+            .booking-form-container {
+                padding: 2rem;
+            }
+            .form-group .half-width-group {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+        @media (max-width: 480px) {
+            .booking-form-container {
+                padding: 1.5rem;
+            }
+            .booking-form h3 {
+                font-size: 1.8rem;
+            }
+            .form-group label {
+                font-size: 1rem;
+            }
+            .booking-submit-btn {
+                font-size: 1.05rem;
+                padding: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container header-content">
+            <div class="logo">
+                <img src="eco logo.png"> 
+                <span class="logo-text">ECO TOURISM CHINTHONG</span>
+            </div>
+            <nav class="nav-menu">
+                <ul>
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="trekking.html" class="nav-link">Trekking</a></li>
+                    <li><a href="camping.html" class="nav-link">Camping</a></li>
+                    <li><a href="events.html" class="nav-link">Events</a></li>
+                    <li><a href="booking.html" class="nav-link active">My Booking</a></li> <li><a href="contact.html" class="nav-link">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="auth-buttons">
+                <a href="login.html" class="btn btn-login" id="navLoginBtn">Log In</a>
+                <a href="#" class="btn btn-logout" id="logoutBtn">Logout</a>
+            </div>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+    
+    <div class="mobile-nav" id="mobileNav">
+        <div class="mobile-nav-header">
+            <div class="mobile-logo">
+                <img src="eco logo.png" alt="Karbi Anglong Flag" class="flag-icon" style="height: 28px;"> 
+            </div>
+            <button class="close-btn" id="closeMobileNavBtn">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <ul class="mobile-nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="trekking.html">Trekking</a></li>
+            <li><a href="camping.html">Camping</a></li>
+            <li><a href="events.html">Events</a></li>
+            <li><a href="booking.html" class="active">My Booking</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <div class="mobile-auth-buttons">
+            <a href="login.html" class="btn btn-login" id="mobileLoginBtn">Log In</a>
+            <a href="#" class="btn btn-logout" id="mobileLogoutBtn">Logout</a>
+        </div>
+    </div>
+    <div class="overlay" id="overlay"></div>
+
+    <section class="hero-section booking-hero" id="booking-home">
+        <div class="hero-background" style="background-image: url('images/booking-hero-image.jpg');"></div>
+        <div class="hero-overlay"></div>
+        <div class="container hero-content">
+            <h1 class="hero-title">Plan Your Adventure</h1>
+            <p class="hero-subtitle">
+                Fill out the form below to book your next trekking or camping experience in Karbi Anglong.
+            </p>
+            <div class="hero-buttons">
+                <a href="#booking-form" class="btn btn-primary">Start Booking</a>
+                <a href="contact.html" class="btn btn-secondary-outline">Need Help?</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="section booking-section" id="booking-form">
+        <div class="container">
+            <h2 class="section-title">Book Your Experience</h2>
+            <p class="section-description">Provide us with your details and preferred adventure. We'll get back to you with confirmation!</p>
+            
+            <div class="booking-form-container">
+                <form class="booking-form">
+                    <h3>Your Details</h3>
+                    <div class="form-group half-width-group">
+                        <div>
+                            <label for="firstName">First Name</label>
+                            <input type="text" id="firstName" name="firstName" required>
+                        </div>
+                        <div>
+                            <label for="lastName">Last Name</label>
+                            <input type="text" id="lastName" name="lastName" required>
+                        </div>
+                    </div>
+                    <div class="form-group half-width-group">
+                        <div>
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div>
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" name="phone" pattern="[0-9]{10}" placeholder="e.g., 9876543210" required>
+                        </div>
+                    </div>
+
+                    <h3>Adventure Details</h3>
+                    <div class="form-group">
+                        <label for="adventureType">Type of Adventure</label>
+                        <select id="adventureType" name="adventureType" required>
+                            <option value="">Select an adventure type</option>
+                            <option value="trekking">Trekking</option>
+                            <option value="camping">Camping</option>
+                            <option value="event">Special Event</option>
+                            <option value="custom">Custom Adventure</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="preferredPackage">Preferred Package/Trek/Camp (Optional)</label>
+                        <input type="text" id="preferredPackage" name="preferredPackage" placeholder="e.g., Karbi Hills Summit Trek, Lakeside Camp">
+                    </div>
+
+                    <div class="form-group half-width-group">
+                        <div>
+                            <label for="startDate">Preferred Start Date</label>
+                            <input type="date" id="startDate" name="startDate" required>
+                        </div>
+                        <div>
+                            <label for="numGuests">Number of Guests</label>
+                            <input type="number" id="numGuests" name="numGuests" min="1" value="1" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Additional Notes / Special Requests</label>
+                        <textarea id="message" name="message" rows="5" placeholder="Any specific requirements, dietary needs, or questions..."></textarea>
+                    </div>
+
+                    <button type="submit" class="btn booking-submit-btn">Submit Booking Request</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div class="cta-stripes"></div>
+        <div class="cta-overlay"></div>
+        <div class="container cta-content">
+            <h2 class="cta-title">Not Sure What to Book?</h2>
+            <p class="cta-description">Our team is here to help you design the perfect Karbi Anglong adventure!</p>
+            <div class="cta-buttons">
+                <a href="contact.html" class="btn btn-primary">Contact Our Experts</a>
+                <a href="index.html#why-choose-us" class="btn btn-secondary-outline">Why Choose Us?</a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container footer-grid">
+            <div class="footer-col about">
+                <div class="logo footer-logo">
+                    <img src="eco logo.png" alt="Karbi Anglong Flag" class="flag-icon" style="height: 60px;">
+                </div>
+                <p>Explore the vibrant culture and breathtaking landscapes of Karbi Anglong. We're dedicated to providing unforgettable adventures in one of India's most beautiful regions.</p>
+            </div>
+            <div class="footer-col">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="trekking.html">Trekking</a></li>
+                    <li><a href="camping.html">Camping</a></li>
+                    <li><a href="events.html">Events</a></li>
+                    <li><a href="booking.html">Booking</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Services</h3>
+                <ul>
+                    <li><a href="#">Guided Tour</a></li>
+                    <li><a href="#">Equipment Rental</a></li>
+                    <li><a href="#">Photography Tours</a></li>
+                    <li><a href="#">Cultural Experiences</a></li>
+                    <li><a href="#">Custom Adventures</a></li>
+                </ul>
+            </div>
+            <div class="footer-col contact">
+                <h3>Contact</h3>
+                <p><i class="fas fa-map-marker-alt"></i> Karbi Anglong, Assam, India</p>
+                <p><i class="fas fa-envelope"></i> info@karbianglong.com</p>
+                <p><i class="fas fa-phone"></i> +91 987 654 3210</p>
+                <p><i class="fas fa-clock"></i> Mon-Sat: 9AM - 6PM</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 Karbi Anglong Adventures. All rights reserved. | Designed with ❤️ for Nature Lovers</p>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trekking Adventures - Karbi Anglong</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* Specific styles for the trekking page hero if different from index */
+        .trekking-hero .hero-background {
+            background: linear-gradient(to bottom, rgba(0,0,0,0.7), rgba(0,0,0,0.8)),
+                        url('images/trekking-hero-image.jpg') no-repeat center center/cover; /* Replace with your trekking hero image */
+            /* Ensure 'images' directory exists and image is there */
+        }
+        
+        /* Styles for Trekking Card Details */
+        .trek-card {
+            display: flex;
+            flex-direction: column;
+            text-align: left; /* Override adventure-card text-align */
+            padding: 0; /* Remove padding from card body, add to content div */
+        }
+
+        .trek-card .card-image {
+            width: 100%;
+            height: 220px; /* Fixed height for consistent image size */
+            object-fit: cover;
+            border-top-left-radius: 12px;
+            border-top-right-radius: 12px;
+            transition: transform 0.4s ease;
+        }
+
+        .trek-card:hover .card-image {
+            transform: scale(1.05); /* Slight zoom on image hover */
+        }
+
+        .trek-card .card-content {
+            padding: 1.5rem;
+            flex-grow: 1; /* Allows content to expand and fill space */
+            display: flex;
+            flex-direction: column;
+        }
+
+        .trek-card h3 {
+            font-size: 1.6rem;
+            margin-bottom: 0.8rem;
+            color: var(--dark-gray);
+        }
+
+        .trek-card .duration,
+        .trek-card .difficulty {
+            font-size: 0.95rem;
+            color: #666;
+            margin-bottom: 0.4rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .trek-card .difficulty i {
+            margin-right: 8px;
+            color: var(--primary-red);
+        }
+
+        .trek-card .duration i {
+            margin-right: 8px;
+            color: var(--secondary-color); /* You can define a new variable or use existing */
+        }
+
+
+        .trek-card p {
+            font-size: 1rem;
+            color: #555;
+            margin-bottom: 1rem;
+        }
+
+        .trek-card .features-list {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 1.5rem;
+        }
+
+        .trek-card .features-list li {
+            font-size: 0.95rem;
+            color: var(--text-color);
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .trek-card .features-list i {
+            color: var(--primary-red);
+            margin-right: 10px;
+        }
+
+        .trek-card .btn-primary {
+            margin-top: auto; /* Pushes button to the bottom */
+            align-self: flex-start; /* Aligns button to the left */
+        }
+
+        .btn-small {
+            padding: 8px 18px;
+            font-size: 0.9rem;
+            border-radius: 20px;
+        }
+
+        /* Responsive adjustments for trek cards */
+        @media (max-width: 768px) {
+            .trek-card .card-image {
+                height: 200px;
+            }
+            .trek-card h3 {
+                font-size: 1.4rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container header-content">
+            <div class="logo">
+                <img src="eco logo.png"> 
+                <span class="logo-text">ECO TOURISM CHINTHONG</span>
+            </div>
+            <nav class="nav-menu">
+                <ul>
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="trekking.html" class="nav-link active">Trekking</a></li> <li><a href="camping.html" class="nav-link">Camping</a></li>
+                    <li><a href="events.html" class="nav-link">Events</a></li>
+                    <li><a href="booking.html" class="nav-link">My Booking</a></li>
+                    <li><a href="contact.html" class="nav-link">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="auth-buttons">
+                <a href="login.html" class="btn btn-login" id="navLoginBtn">Log In</a>
+                <a href="#" class="btn btn-logout" id="logoutBtn">Logout</a>
+            </div>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+    
+    <div class="mobile-nav" id="mobileNav">
+        <div class="mobile-nav-header">
+            <div class="mobile-logo">
+                <img src="eco logo.png" alt="Karbi Anglong Flag" class="flag-icon" style="height: 28px;"> 
+            </div>
+             <button class="close-btn" id="closeMobileNavBtn">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <ul class="mobile-nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="trekking.html" class="active">Trekking</a></li>
+            <li><a href="camping.html">Camping</a></li>
+            <li><a href="events.html">Events</a></li>
+            <li><a href="booking.html">My Booking</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <div class="mobile-auth-buttons">
+            <a href="login.html" class="btn btn-login" id="mobileLoginBtn">Log In</a>
+            <a href="#" class="btn btn-logout" id="mobileLogoutBtn">Logout</a>
+        </div>
+    </div>
+    <div class="overlay" id="overlay"></div>
+
+    <section class="hero-section trekking-hero" id="trekking-home">
+        <div class="hero-background" style="background-image: url('images/trekking-hero-image.jpg');"></div>
+        <div class="hero-overlay"></div>
+        <div class="container hero-content">
+            <h1 class="hero-title">Discover Our Trekking Adventures</h1>
+            <p class="hero-subtitle">
+                Explore the pristine trails and majestic peaks of Karbi Anglong with our expert guides.
+            </p>
+            <div class="hero-buttons">
+                <a href="#featured-treks" class="btn btn-primary">Explore Treks</a>
+                <a href="#trek-packages" class="btn btn-secondary-outline">View All Packages</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="trek-packages">
+        <div class="container">
+            <h2 class="section-title">Our Trekking Packages</h2>
+            <p class="section-description">Choose from a variety of trekking experiences, from easy nature walks to challenging multi-day expeditions.</p>
+            <div class="adventure-cards"> <div class="card trek-card">
+                    <img src="images/trek-karbi-hills.jpg" alt="Karbi Hills Summit Trek" class="card-image">
+                    <div class="card-content">
+                        <h3>Karbi Hills Summit Trek</h3>
+                        <p class="duration"><i class="fas fa-calendar-alt"></i> 3 Days / 2 Nights</p>
+                        <p class="difficulty"><i class="fas fa-mountain"></i> Moderate to Difficult</p>
+                        <p>A challenging ascent to the highest peaks, offering breathtaking panoramic views of the entire Karbi Anglong region. Includes experienced guides and campsite amenities.</p>
+                        <ul class="features-list">
+                            <li><i class="fas fa-check-circle"></i> Experienced Guides</li>
+                            <li><i class="fas fa-check-circle"></i> High Altitude Views</li>
+                            <li><i class="fas fa-check-circle"></i> All Meals Included</li>
+                            <li><i class="fas fa-check-circle"></i> Camping Equipment</li>
+                        </ul>
+                        <a href="booking.html?package=karbi-hills-summit" class="btn btn-primary btn-small">Book This Trek</a>
+                    </div>
+                </div>
+
+                <div class="card trek-card">
+                    <img src="images/trek-diphu-forest.jpg" alt="Diphu Forest Trail" class="card-image">
+                    <div class="card-content">
+                        <h3>Diphu Forest Trail</h3>
+                        <p class="duration"><i class="fas fa-calendar-alt"></i> 1 Day / No Camping</p>
+                        <p class="difficulty"><i class="fas fa-person-walking"></i> Easy</p>
+                        <p>A leisurely walk through the lush Diphu forests, perfect for families and beginners. Discover local flora and fauna, and enjoy a refreshing picnic lunch by the stream.</p>
+                        <ul class="features-list">
+                            <li><i class="fas fa-check-circle"></i> Family-Friendly</li>
+                            <li><i class="fas fa-check-circle"></i> Bird Watching</li>
+                            <li><i class="fas fa-check-circle"></i> Picnic Lunch Provided</li>
+                            <li><i class="fas fa-check-circle"></i> Local Flora & Fauna</li>
+                        </ul>
+                        <a href="booking.html?package=diphu-forest-trail" class="btn btn-primary btn-small">Book This Trek</a>
+                    </div>
+                </div>
+
+                <div class="card trek-card">
+                    <img src="images/trek-umrongso-river.jpg" alt="Umrongso River Valley Expedition" class="card-image">
+                    <div class="card-content">
+                        <h3>Umrongso River Valley Expedition</h3>
+                        <p class="duration"><i class="fas fa-calendar-alt"></i> 4 Days / 3 Nights</p>
+                        <p class="difficulty"><i class="fas fa-shoe-prints"></i> Medium</p>
+                        <p>An immersive journey along the scenic Umrongso River valley, combining trekking with river crossings and visits to remote villages. Experience unique local culture.</p>
+                        <ul class="features-list">
+                            <li><i class="fas fa-check-circle"></i> River Crossings</li>
+                            <li><i class="fas fa-check-circle"></i> Village Visits</li>
+                            <li><i class="fas fa-check-circle"></i> Cultural Immersion</li>
+                            <li><i class="fas fa-check-circle"></i> Overnight Stays</li>
+                        </ul>
+                        <a href="booking.html?package=umrongso-river-expedition" class="btn btn-primary btn-small">Book This Trek</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div class="cta-stripes"></div>
+        <div class="cta-overlay"></div>
+        <div class="container cta-content">
+            <h2 class="cta-title">Ready to Hit the Trails?</h2>
+            <p class="cta-description">Don't just dream about adventure, live it! Explore our treks or let us customize one for you.</p>
+            <div class="cta-buttons">
+                <a href="booking.html" class="btn btn-primary">Book Your Trek</a>
+                <a href="contact.html" class="btn btn-secondary-outline">Inquire About Custom Treks</a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container footer-grid">
+            <div class="footer-col about">
+                <div class="logo footer-logo">
+                    <img src="eco logo.png">
+                </div>
+                <p>Explore the vibrant culture and breathtaking landscapes of Karbi Anglong. We're dedicated to providing unforgettable adventures in one of India's most beautiful regions.</p>
+            </div>
+            <div class="footer-col">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="trekking.html">Trekking</a></li>
+                    <li><a href="camping.html">Camping</a></li>
+                    <li><a href="events.html">Events</a></li>
+                    <li><a href="booking.html">Booking</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Services</h3>
+                <ul>
+                    <li><a href="#">Guided Tour</a></li>
+                    <li><a href="#">Equipment Rental</a></li>
+                    <li><a href="#">Photography Tours</a></li>
+                    <li><a href="#">Cultural Experiences</a></li>
+                    <li><a href="#">Custom Adventures</a></li>
+                </ul>
+            </div>
+            <div class="footer-col contact">
+                <h3>Contact</h3>
+                <p><i class="fas fa-map-marker-alt"></i> Karbi Anglong, Assam, India</p>
+                <p><i class="fas fa-envelope"></i> info@karbianglong.com</p>
+                <p><i class="fas fa-phone"></i> +91 987 654 3210</p>
+                <p><i class="fas fa-clock"></i> Mon-Sat: 9AM - 6PM</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+                  <p>&copy; 2025 ECO TOURISM CHINTHONG. All rights reserved. | Designed with ❤️ for Nature Lovers</p>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

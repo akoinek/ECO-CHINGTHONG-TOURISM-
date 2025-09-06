@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events & Festivals - Karbi Anglong Adventures</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* Specific styles for the events page hero */
+        .events-hero .hero-background {
+            background: linear-gradient(to bottom, rgba(0,0,0,0.7), rgba(0,0,0,0.8)),
+                        url('images/events-hero-image.jpg') no-repeat center center/cover; /* Replace with your events hero image */
+            /* Ensure 'images' directory exists and image is there */
+        }
+
+        /* Event Cards */
+        .event-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            margin-top: 2rem;
+        }
+
+        .event-card {
+            background: var(--pure-white);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.4s ease;
+            border: 1px solid rgba(230, 57, 70, 0.2);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .event-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 25px rgba(230, 57, 70, 0.2);
+            border-color: var(--primary-red);
+        }
+
+        .event-card .card-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+        
+        .event-card:hover .card-image {
+            transform: scale(1.05);
+        }
+
+        .event-card .card-content {
+            padding: 1.8rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .event-card .event-date {
+            font-size: 0.95rem;
+            color: var(--primary-red);
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+        }
+        .event-card .event-date i {
+            margin-right: 8px;
+            font-size: 1.1rem;
+        }
+
+        .event-card h3 {
+            font-size: 1.7rem;
+            margin-bottom: 1rem;
+            color: var(--dark-gray);
+            line-height: 1.3;
+        }
+
+        .event-card .event-location {
+            font-size: 0.95rem;
+            color: #666;
+            margin-bottom: 1.2rem;
+            display: flex;
+            align-items: center;
+        }
+        .event-card .event-location i {
+            margin-right: 8px;
+        }
+
+        .event-card p {
+            font-size: 1rem;
+            color: #555;
+            margin-bottom: 1.5rem;
+        }
+
+        .event-card .btn-primary {
+            margin-top: auto; /* Pushes button to the bottom */
+            align-self: flex-start; /* Aligns button to the left */
+            padding: 10px 22px;
+            font-size: 0.95rem;
+        }
+
+        /* Responsive adjustments for event cards */
+        @media (max-width: 768px) {
+            .event-card .card-image {
+                height: 220px;
+            }
+            .event-card h3 {
+                font-size: 1.5rem;
+            }
+        }
+        @media (max-width: 480px) {
+            .event-card .card-image {
+                height: 200px;
+            }
+            .event-card h3 {
+                font-size: 1.3rem;
+            }
+            .event-cards {
+                gap: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container header-content">
+            <div class="logo">
+                <img src="eco logo.png"> 
+                <span class="logo-text">ECO TOURISM CHINTHONG</span>
+            </div>
+            <nav class="nav-menu">
+                <ul>
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="trekking.html" class="nav-link">Trekking</a></li>
+                    <li><a href="camping.html" class="nav-link">Camping</a></li>
+                    <li><a href="events.html" class="nav-link active">Events</a></li> <li><a href="booking.html" class="nav-link">My Booking</a></li>
+                    <li><a href="contact.html" class="nav-link">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="auth-buttons">
+                <a href="login.html" class="btn btn-login" id="navLoginBtn">Log In</a>
+                <a href="#" class="btn btn-logout" id="logoutBtn">Logout</a>
+            </div>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+    
+    <div class="mobile-nav" id="mobileNav">
+        <div class="mobile-nav-header">
+            <div class="mobile-logo">
+                <img src="eco logo.png" alt="Karbi Anglong Flag" class="flag-icon" style="height: 28px;"> 
+            </div>
+            <button class="close-btn" id="closeMobileNavBtn">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <ul class="mobile-nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="trekking.html">Trekking</a></li>
+            <li><a href="camping.html">Camping</a></li>
+            <li><a href="events.html" class="active">Events</a></li>
+            <li><a href="booking.html">My Booking</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <div class="mobile-auth-buttons">
+            <a href="login.html" class="btn btn-login" id="mobileLoginBtn">Log In</a>
+            <a href="#" class="btn btn-logout" id="mobileLogoutBtn">Logout</a>
+        </div>
+    </div>
+    <div class="overlay" id="overlay"></div>
+
+    <section class="hero-section events-hero" id="events-home">
+        <div class="hero-background" style="background-image: url('images/events-hero-image.jpg');"></div>
+        <div class="hero-overlay"></div>
+        <div class="container hero-content">
+            <h1 class="hero-title">Upcoming Events & Festivals</h1>
+            <p class="hero-subtitle">
+                Join us for cultural celebrations, adventure gatherings, and unique experiences in Karbi Anglong.
+            </p>
+            <div class="hero-buttons">
+                <a href="#event-list" class="btn btn-primary">View All Events</a>
+                <a href="contact.html" class="btn btn-secondary-outline">Host Your Event</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="event-list">
+        <div class="container">
+            <h2 class="section-title">Our Event Calendar</h2>
+            <p class="section-description">Discover traditional festivals, adventure challenges, and community gatherings throughout the year.</p>
+            
+            <div class="event-cards">
+                <div class="card event-card">
+                    <img src="images/event-karbi-youth-festival.jpg" alt="Karbi Youth Festival" class="card-image">
+                    <div class="card-content">
+                        <p class="event-date"><i class="fas fa-calendar-alt"></i> February 10-15, 2026</p>
+                        <h3>Karbi Youth Festival</h3>
+                        <p class="event-location"><i class="fas fa-map-marker-alt"></i> Diphu, Karbi Anglong</p>
+                        <p>The largest ethnic festival of Northeast India, showcasing the rich cultural heritage of the Karbi community through dance, music, crafts, and food.</p>
+                        <a href="booking.html?event=karbi-youth-festival" class="btn btn-primary">Learn More & Register</a>
+                    </div>
+                </div>
+
+                <div class="card event-card">
+                    <img src="images/event-winter-trek.jpg" alt="Winter Trekking Challenge" class="card-image">
+                    <div class="card-content">
+                        <p class="event-date"><i class="fas fa-calendar-alt"></i> December 5-7, 2025</p>
+                        <h3>Winter Trekking Challenge</h3>
+                        <p class="event-location"><i class="fas fa-map-marker-alt"></i> Singhason Hills</p>
+                        <p>An exhilarating 3-day trekking challenge across the frosty peaks of Singhason Hills. Test your endurance and enjoy stunning winter landscapes.</p>
+                        <a href="booking.html?event=winter-trekking-challenge" class="btn btn-primary">Join the Challenge</a>
+                    </div>
+                </div>
+
+                <div class="card event-card">
+                    <img src="images/event-river-rafting.jpg" alt="Umrongso River Rafting Fest" class="card-image">
+                    <div class="card-content">
+                        <p class="event-date"><i class="fas fa-calendar-alt"></i> March 20-22, 2026</p>
+                        <h3>Umrongso River Rafting Fest</h3>
+                        <p class="event-location"><i class="fas fa-map-marker-alt"></i> Umrongso River</p>
+                        <p>Experience the thrill of white-water rafting on the mighty Umrongso River. Fun for all skill levels, with safety measures and expert guides.</p>
+                        <a href="booking.html?event=river-rafting-fest" class="btn btn-primary">Book Your Spot</a>
+                    </div>
+                </div>
+
+                <div class="card event-card">
+                    <img src="images/event-craft-food.jpg" alt="Local Craft & Food Fair" class="card-image">
+                    <div class="card-content">
+                        <p class="event-date"><i class="fas fa-calendar-alt"></i> April 1-3, 2026</p>
+                        <h3>Local Craft & Food Fair</h3>
+                        <p class="event-location"><i class="fas fa-map-marker-alt"></i> Donkamokam Town</p>
+                        <p>A vibrant fair celebrating Karbi Anglong's traditional crafts, handlooms, and delicious local cuisine. Support local artisans and taste authentic flavors.</p>
+                        <a href="contact.html" class="btn btn-primary">Become a Vendor</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div class="cta-stripes"></div>
+        <div class="cta-overlay"></div>
+        <div class="container cta-content">
+            <h2 class="cta-title">Don't Miss Out on Exciting Events!</h2>
+            <p class="cta-description">Sign up for our newsletter to get updates on upcoming festivals, workshops, and adventure gatherings.</p>
+            <div class="cta-buttons">
+                <a href="contact.html" class="btn btn-primary">Subscribe to Newsletter</a>
+                <a href="booking.html" class="btn btn-secondary-outline">Register for an Event</a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container footer-grid">
+            <div class="footer-col about">
+                <div class="logo footer-logo">
+                    <img src="eco logo.png" style="height: 60px;">
+                </div>
+                <p>Explore the vibrant culture and breathtaking landscapes of Karbi Anglong. We're dedicated to providing unforgettable adventures in one of India's most beautiful regions.</p>
+            </div>
+            <div class="footer-col">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="trekking.html">Trekking</a></li>
+                    <li><a href="camping.html">Camping</a></li>
+                    <li><a href="events.html">Events</a></li>
+                    <li><a href="booking.html">Booking</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Services</h3>
+                <ul>
+                    <li><a href="#">Guided Tour</a></li>
+                    <li><a href="#">Equipment Rental</a></li>
+                    <li><a href="#">Photography Tours</a></li>
+                    <li><a href="#">Cultural Experiences</a></li>
+                    <li><a href="#">Custom Adventures</a></li>
+                </ul>
+            </div>
+            <div class="footer-col contact">
+                <h3>Contact</h3>
+                <p><i class="fas fa-map-marker-alt"></i> Karbi Anglong, Assam, India</p>
+                <p><i class="fas fa-envelope"></i> info@karbianglong.com</p>
+                <p><i class="fas fa-phone"></i> +91 987 654 3210</p>
+                <p><i class="fas fa-clock"></i> Mon-Sat: 9AM - 6PM</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 Karbi Anglong Adventures. All rights reserved. | Designed with ❤️ for Nature Lovers</p>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Karbi Anglong Adventures - Eco Tourism Chinthong</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- HEADER -->
+    <header class="header">
+        <div class="container header-content">
+            <div class="logo">
+                <img src="images/logo.png" alt="Karbi Anglong Flag" class="flag-icon"> <!-- UPDATED: logo.png -->
+                <span class="logo-text">ECO TOURISM CHINTHONG</span>
+            </div>
+            <nav class="nav-menu">
+                <ul>
+                    <li><a href="index.html" class="nav-link active">Home</a></li>
+                    <li><a href="trekking.html" class="nav-link">Trekking</a></li>
+                    <li><a href="camping.html" class="nav-link">Camping</a></li>
+                    <li><a href="events.html" class="nav-link">Events</a></li>
+                    <li><a href="booking.html" class="nav-link">My Booking</a></li>
+                    <li><a href="contact.html" class="nav-link">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="auth-buttons">
+                <!-- These buttons are controlled by script.js based on login status -->
+                <a href="login.html" class="btn btn-login" id="navLoginBtn">Log In</a>
+                <a href="#" class="btn btn-logout" id="logoutBtn">Logout</a>
+            </div>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+    
+    <!-- Mobile Navigation -->
+    <div class="mobile-nav" id="mobileNav">
+        <div class="mobile-nav-header">
+            <div class="mobile-logo">
+                <img src="images/logo.png" alt="Karbi Anglong Flag" class="flag-icon" style="height: 40px;">
+                <span class="logo-text">ECO</span> <!-- UPDATED: logo.png -->
+            </div>
+            <button class="close-btn" id="closeMobileNavBtn">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <ul class="mobile-nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="trekking.html">Trekking</a></li>
+            <li><a href="camping.html">Camping</a></li>
+            <li><a href="events.html">Events</a></li>
+            <li><a href="booking.html">My Booking</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        
+          
+          
+        </ul>
+        <div class="mobile-auth-buttons">
+            <a href="login.html" class="btn btn-login" id="mobileLoginBtn">Log In</a>
+            <a href="#" class="btn btn-logout" id="mobileLogoutBtn">Logout</a>
+        </div>
+    </div>
+    <div class="overlay" id="overlay"></div>
+
+    <!-- HERO SECTION -->
+    <section class="hero-section" id="home">
+        <div class="hero-background"></div>
+        <div class="hero-overlay"></div>
+        <div class="container hero-content">
+            <h1 class="hero-title">Discover the Untamed Beauty of Karbi Anglong</h1>
+            <p class="hero-subtitle">
+                Embark on unforgettable journeys through lush forests, pristine rivers, and vibrant cultural landscapes. Your adventure starts here.
+            </p>
+            <div class="hero-buttons">
+                <a href="booking.html" class="btn btn-primary" id="startAdventureBtn">Book Your Adventure</a>
+                <a href="trekking.html" class="btn btn-secondary">Explore Treks</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ADVENTURES SECTION -->
+    <section class="section" id="adventures">
+        <div class="container">
+            <h2 class="section-title">Our Adventures</h2>
+            <p class="section-description">
+                Immerse yourself in the heart of nature with our curated experiences.
+            </p>
+            <div class="adventure-cards">
+                <div class="card adventure-card">
+                    <div class="icon-circle"><i class="fas fa-hiking"></i></div>
+                    <h3>Trekking Expeditions</h3>
+                    <p>Conquer challenging trails and discover hidden waterfalls and panoramic views.</p>
+                </div>
+                <div class="card adventure-card">
+                    <div class="icon-circle"><i class="fas fa-campground"></i></div>
+                    <h3>Wilderness Camping</h3>
+                    <p>Spend nights under starry skies, surrounded by the serene sounds of the forest.</p>
+                </div>
+                <div class="card adventure-card">
+                    <div class="icon-circle"><i class="fas fa-camera-retro"></i></div>
+                    <h3>Wildlife Photography</h3>
+                    <p>Capture the elusive flora and fauna of Karbi Anglong with expert guides.</p>
+                </div>
+                <div class="card adventure-card">
+                    <div class="icon-circle"><i class="fas fa-handshake"></i></div>
+                    <h3>Cultural Immersion</h3>
+                    <p>Experience the rich traditions and warm hospitality of the local Karbi community.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WHY CHOOSE US SECTION -->
+    <section class="section why-choose-us-section" id="why-us">
+        <div class="container">
+            <h2 class="section-title">Why Choose Us?</h2>
+            <p class="section-description">
+                We are committed to providing safe, sustainable, and unforgettable eco-tourism experiences.
+            </p>
+            <div class="why-us-cards">
+                <div class="card why-us-card">
+                    <div class="icon-wrapper"><i class="fas fa-shield-alt icon-white-bg"></i></div>
+                    <h4>Safety First</h4>
+                    <p>Experienced guides and strict safety protocols ensure your well-being.</p>
+                </div>
+                <div class="card why-us-card">
+                    <div class="icon-wrapper"><i class="fas fa-leaf icon-white-bg"></i></div>
+                    <h4>Eco-Friendly</h4>
+                    <p>Sustainable practices are at the core of our operations to protect nature.</p>
+                </div>
+                <div class="card why-us-card">
+                    <div class="icon-wrapper"><i class="fas fa-users icon-white-bg"></i></div>
+                    <h4>Local Community Support</h4>
+                    <p>We empower local communities through fair tourism practices.</p>
+                </div>
+                <div class="card why-us-card">
+                    <div class="icon-wrapper"><i class="fas fa-star icon-white-bg"></i></div>
+                    <h4>Unforgettable Experiences</h4>
+                    <p>Crafting unique and memorable adventures tailored to your desires.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NATURAL BEAUTY SECTION -->
+    <section class="section natural-beauty-section" id="gallery">
+        <div class="container">
+            <h2 class="section-title" style="color: var(--pure-white);">Glimpses of Natural Beauty</h2>
+            <p class="section-description" style="color: var(--light-gray);">
+                A visual journey through the stunning landscapes of Karbi Anglong.
+            </p>
+            <div class="image-gallery">
+                <div class="gallery-item">
+                    <img src="images/gallery1.jpg" alt="Lush Green Valley">
+                </div>
+                <div class="gallery-item">
+                    <img src="images/gallery2.jpg" alt="River Stream">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://placehold.co/400x250/E63946/FFFFFF?text=Mountain+View" alt="Mountain View">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://placehold.co/400x250/212529/FFFFFF?text=Forest+Path" alt="Forest Path">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://placehold.co/400x250/F39C12/FFFFFF?text=Sunset+View" alt="Sunset View">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://placehold.co/400x250/D90429/FFFFFF?text=Local+Culture" alt="Local Culture">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CALL TO ACTION SECTION -->
+    <section class="cta-section">
+        <div class="cta-stripes"></div>
+        <div class="cta-overlay"></div>
+        <div class="container cta-content">
+            <h2 class="cta-title">Ready for Your Next Adventure?</h2>
+            <p class="cta-description">
+                Don't just dream about it, experience the magic of Karbi Anglong. Book your tour today!
+            </p>
+            <div class="cta-buttons">
+                <a href="booking.html" class="btn btn-primary">Book Now</a>
+                <a href="contact.html" class="btn btn-secondary-outline">Contact Us</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container footer-grid">
+            <div class="footer-col about">
+                <div class="logo footer-logo">
+                    <img src="images/logo.png" alt="Karbi Anglong Flag" class="flag-icon" style="height: 60px;"> <!-- UPDATED: logo.png -->
+                </div>
+                <p>Explore the vibrant culture and breathtaking landscapes of Karbi Anglong. We're dedicated to providing unforgettable adventures in one of India's most beautiful regions.</p>
+            </div>
+            <div class="footer-col">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="trekking.html">Trekking</a></li>
+                    <li><a href="camping.html">Camping</a></li>
+                    <li><a href="events.html">Events</a></li>
+                    <li><a href="booking.html">Booking</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Services</h3>
+                <ul>
+                    <li><a href="#">Guided Tour</a></li>
+                    <li><a href="#">Equipment Rental</a></li>
+                    <li><a href="#">Photography Tours</a></li>
+                    <li><a href="#">Cultural Experiences</a></li>
+                    <li><a href="#">Custom Adventures</a></li>
+                </ul>
+            </div>
+            <div class="footer-col contact">
+                <h3>Contact</h3>
+                <p><i class="fas fa-map-marker-alt"></i> Karbi Anglong, Assam, India</p>
+                <p><i class="fas fa-envelope"></i> info@karbianglong.com</p>
+                <p><i class="fas fa-phone"></i> +91 987 654 3210</p>
+                <p><i class="fas fa-clock"></i> Mon-Sat: 9AM - 6PM</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 ECO TOURISM CHINTHONG. All rights reserved. | Designed with ❤️ for Nature Lovers</p>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
